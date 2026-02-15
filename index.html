@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocean Cabinet and Countertops — Kitchen Renovation | Lindenwold, NJ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           CSS Variables & Reset
+        ======================================== */
+        :root {
+            --color-bg: #FAF9F7;
+            --color-bg-alt: #F5F4F1;
+            --color-heading: #2A2A2A;
+            --color-body: #4A4A4A;
+            --color-muted: #6B6B6B;
+            --color-accent: #B8977E;
+            --color-accent-dark: #9A7D66;
+            --color-divider: #E8E6E3;
+
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+            --max-width: 1280px;
+            --section-padding: 100px;
+            --section-padding-mobile: 64px;
+
+            --transition-slow: 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-medium: 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-fast: 300ms ease-out;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--color-body);
+            background-color: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ========================================
+           Typography
+        ======================================== */
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            color: var(--color-heading);
+            letter-spacing: -0.01em;
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1.2; }
+        h2 { font-size: clamp(1.875rem, 3.5vw, 2.25rem); line-height: 1.25; }
+        h3 { font-size: clamp(1.375rem, 2.5vw, 1.625rem); line-height: 1.35; }
+
+        p { max-width: 600px; }
+
+        .text-muted {
+            color: var(--color-muted);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        /* ========================================
+           Navigation
+        ======================================== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            transition: background var(--transition-fast), padding var(--transition-fast);
+        }
+
+        .nav.scrolled {
+            background: rgba(250, 249, 247, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 48px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 120px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: var(--color-body);
+            transition: color var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-accent);
+            transition: width var(--transition-fast);
+        }
+
+        .nav-links a:hover { color: var(--color-heading); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.active { color: var(--color-accent); }
+        .nav-links a.active::after { width: 100%; }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .nav-toggle span {
+            width: 24px;
+            height: 1px;
+            background: var(--color-heading);
+            transition: var(--transition-fast);
+        }
+
+        /* ========================================
+           Hero Section
+        ======================================== */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-media {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(250, 249, 247, 0.1) 0%,
+                rgba(250, 249, 247, 0.3) 60%,
+                rgba(250, 249, 247, 0.8) 100%
+            );
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 0 48px 80px;
+            max-width: var(--max-width);
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .hero-statement {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5.5vw, 3.5rem);
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--color-heading);
+            max-width: 700px;
+        }
+
+        .hero-subline {
+            margin-top: 20px;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: var(--color-body);
+            max-width: 480px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 32px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .hero-btn-primary {
+            background: var(--color-accent);
+            color: #fff;
+        }
+
+        .hero-btn-primary:hover {
+            background: var(--color-accent-dark);
+            transform: translateY(-2px);
+        }
+
+        .hero-btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--color-heading);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-btn-secondary:hover { background: #fff; }
+
+        .hero-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ========================================
+           Sections Base
+        ======================================== */
+        section {
+            padding: var(--section-padding) 48px;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity var(--transition-medium), transform var(--transition-medium);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========================================
+           Reassurance Section
+        ======================================== */
+        .reassurance-section {
+            background: var(--color-bg-alt);
+            padding: 80px 48px;
+            text-align: center;
+        }
+
+        .reassurance-content h2 {
+            font-size: clamp(1.625rem, 3vw, 2rem);
+            margin-bottom: 20px;
+        }
+
+        .reassurance-content p {
+            font-size: 1.0625rem;
+            color: var(--color-body);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.75;
+        }
+
+        /* ========================================
+           Simple Process Section
+        ======================================== */
+        .process-section {
+            background: var(--color-bg);
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .process-header .label {
+            margin-bottom: 16px;
+        }
+
+        .process-header p {
+            color: var(--color-muted);
+            margin: 16px auto 0;
+            max-width: 480px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 12%;
+            right: 12%;
+            height: 2px;
+            background: var(--color-divider);
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--color-accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step h4 {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .process-step p {
+            color: var(--color-muted);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            max-width: none;
+        }
+
+        .process-cta {
+            text-align: center;
+            margin-top: 56px;
+        }
+
+        .process-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 40px;
+            background: var(--color-heading);
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .process-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .process-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ========================================
+           Gallery Section
+        ======================================== */
+        .gallery-section {
+            background: var(--color-heading);
+            overflow: hidden;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .gallery-header .label {
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 16px;
+        }
+
+        .gallery-header h2 {
+            color: #fff;
+        }
+
+        .gallery-header p {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 16px auto 0;
+        }
+
+        /* Gallery Preview Grid */
+        .gallery-preview {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .gallery-preview-item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .gallery-preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-preview-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-preview-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-preview-item:hover .gallery-preview-overlay {
+            opacity: 1;
+        }
+
+        .gallery-preview-overlay span {
+            color: #fff;
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .gallery-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .gallery-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+
+        .gallery-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ========================================
+           Brands Section
+        ======================================== */
+        .brands-section {
+            background: var(--color-bg);
+            padding: 64px 0;
+            border-top: 1px solid var(--color-divider);
+            border-bottom: 1px solid var(--color-divider);
+            overflow: hidden;
+        }
+
+        .brands-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .brands-header p {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--color-muted);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .brands-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .brands-track {
+            display: flex;
+            gap: 80px;
+            animation: scrollBrands 30s linear infinite;
+            width: max-content;
+        }
+
+        .brands-track:hover { animation-play-state: paused; }
+
+        @keyframes scrollBrands {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .brand-item {
+            flex-shrink: 0;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .brand-item:hover { opacity: 1; }
+
+        .brand-item a {
+            display: flex;
+            height: 100%;
+        }
+
+        .brand-item img {
+            height: 100%;
+            width: auto;
+            max-width: 320px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .brand-item:hover img { filter: grayscale(0%); }
+
+        /* ========================================
+           About Section
+        ======================================== */
+        .about-section {
+            background: var(--color-bg-alt);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            overflow: hidden;
+        }
+
+        .about-image img {
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .about-image:hover img { transform: scale(1.03); }
+
+        .about-text .label { margin-bottom: 24px; }
+        .about-text h2 { margin-bottom: 24px; }
+        .about-text p { margin-bottom: 20px; }
+
+        .about-highlights {
+            list-style: none;
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--color-divider);
+        }
+
+        .about-highlights li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        .about-highlights li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        /* ========================================
+           CTA Section
+        ======================================== */
+        .cta-section {
+            background: var(--color-accent);
+            padding: 80px 48px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            margin: 0 auto 40px;
+            max-width: 480px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 32px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn.primary {
+            background: #fff;
+            color: var(--color-accent-dark);
+        }
+
+        .cta-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .cta-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+
+        .cta-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ========================================
+           Contact Section
+        ======================================== */
+        .contact {
+            background: var(--color-bg);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+        }
+
+        .contact-text .label { margin-bottom: 24px; }
+        .contact-text h2 { margin-bottom: 24px; }
+        .contact-text p { margin-bottom: 40px; }
+
+        .contact-details {
+            list-style: none;
+        }
+
+        .contact-details li {
+            margin-bottom: 24px;
+        }
+
+        .contact-details .detail-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-muted);
+            margin-bottom: 4px;
+        }
+
+        .contact-details a {
+            transition: color var(--transition-fast);
+        }
+
+        .contact-details a:hover { color: var(--color-accent); }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-muted);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 0;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--color-body);
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--color-divider);
+            outline: none;
+            transition: border-color var(--transition-fast);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 32px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 500;
+            color: #fff;
+            background: var(--color-heading);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ========================================
+           Footer
+        ======================================== */
+        .footer {
+            background: var(--color-heading);
+            color: rgba(255, 255, 255, 0.6);
+            padding: 80px 48px;
+        }
+
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1.375rem;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .footer-tagline {
+            font-size: 0.875rem;
+            line-height: 1.6;
+            max-width: 280px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 64px;
+        }
+
+        .footer-column h4 {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul { list-style: none; }
+        .footer-column li { margin-bottom: 12px; }
+
+        .footer-column a {
+            font-size: 0.875rem;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-column a:hover { color: #fff; }
+
+        .footer-bottom {
+            max-width: var(--max-width);
+            margin: 60px auto 0;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8125rem;
+        }
+
+        /* ========================================
+           Floating CTA
+        ======================================== */
+        .floating-cta {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-end;
+        }
+
+        .floating-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 24px;
+            border-radius: 50px;
+            font-family: var(--font-sans);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            text-decoration: none;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .floating-btn svg { width: 20px; height: 20px; }
+
+        .floating-btn-primary {
+            background: var(--color-accent);
+            color: #fff;
+        }
+
+        .floating-btn-primary:hover {
+            background: var(--color-accent-dark);
+            transform: translateY(-2px);
+        }
+
+        .floating-btn-secondary {
+            background: #fff;
+            color: var(--color-heading);
+        }
+
+        .floating-btn-secondary:hover {
+            background: var(--color-heading);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* ========================================
+           Scroll Progress
+        ======================================== */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--color-accent);
+            z-index: 1001;
+            width: 0%;
+        }
+
+        /* ========================================
+           Responsive Design
+        ======================================== */
+        @media (max-width: 1024px) {
+            section { padding: 80px 32px; }
+            .nav { padding: 20px 32px; }
+
+            .gallery-preview { grid-template-columns: repeat(2, 1fr); }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps::before { display: none; }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 48px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: var(--section-padding-mobile) 24px; }
+            .nav { padding: 16px 24px; }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--color-bg);
+                flex-direction: column;
+                padding: 24px;
+                opacity: 0;
+                transform: translateY(-10px);
+                pointer-events: none;
+                visibility: hidden;
+                gap: 24px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: auto;
+                visibility: visible;
+            }
+
+            .nav-toggle { display: flex; }
+            .nav-logo img { height: 80px; }
+
+            .hero-content { padding: 0 24px 48px; }
+
+            .hero-cta { flex-direction: column; }
+            .hero-btn { justify-content: center; }
+
+            .reassurance-section { padding: 56px 24px; }
+
+            .process-steps { grid-template-columns: 1fr; gap: 40px; }
+            .process-step-number { width: 64px; height: 64px; font-size: 1.5rem; }
+
+            .gallery-preview { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .gallery-preview-overlay { padding: 12px; }
+            .gallery-preview-overlay span { font-size: 0.875rem; }
+
+            .brands-track { gap: 60px; }
+            .brand-item { height: 100px; }
+            .brand-item img { max-width: 240px; }
+
+            .cta-section { padding: 56px 24px; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .cta-btn { width: 100%; max-width: 280px; justify-content: center; }
+
+            .footer { padding: 48px 24px; }
+            .footer-links { flex-direction: column; gap: 32px; }
+
+            .floating-cta { bottom: 20px; right: 20px; }
+            .floating-btn span { display: none; }
+            .floating-btn { padding: 16px; border-radius: 50%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"></div>
+
+    <!-- Floating Contact CTA -->
+    <div class="floating-cta">
+        <a href="booking.html" class="floating-btn floating-btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <span>Book Now</span>
+        </a>
+        <a href="tel:+18565533899" class="floating-btn floating-btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            <span>Call</span>
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#" class="nav-logo">
+            <img src="ocean/logo.png" alt="Ocean Cabinet and Countertops">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="booking.html">Book Appointment</a></li>
+            <li><a href="service-area.html">Service Area</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-media">
+            <img src="ocean/kitchen.png" alt="Modern kitchen with custom cabinetry" loading="eager">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-statement fade-in">Kitchen renovation, simplified.</h1>
+            <p class="hero-subline fade-in">Free measurement, design help, and professional installation. We handle everything.</p>
+            <div class="hero-cta fade-in">
+                <a href="booking.html" class="hero-btn hero-btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    Book Free Consultation
+                </a>
+                <a href="tel:+18565533899" class="hero-btn hero-btn-secondary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                    </svg>
+                    Call (856) 553-3899
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reassurance Section -->
+    <section class="reassurance-section">
+        <div class="container">
+            <div class="reassurance-content fade-in">
+                <h2>You don't need to know kitchens.</h2>
+                <p>Most people don't know where to start. That's fine. We'll measure your space, help you pick what works, and handle the rest.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="process-section" id="process">
+        <div class="container">
+            <div class="process-header">
+                <span class="text-muted label fade-in">How It Works</span>
+                <h2 class="fade-in">Four simple steps</h2>
+                <p class="fade-in">No complicated process. Just tell us what you need.</p>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step fade-in">
+                    <div class="process-step-number">1</div>
+                    <h4>Call Us</h4>
+                    <p>Tell us about your project. No commitment.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="process-step-number">2</div>
+                    <h4>We Measure</h4>
+                    <p>Free in-home measurement at your convenience.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="process-step-number">3</div>
+                    <h4>Pick Your Style</h4>
+                    <p>We show you options that fit your budget.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="process-step-number">4</div>
+                    <h4>We Install</h4>
+                    <p>Professional installation. Done right.</p>
+                </div>
+            </div>
+
+            <div class="process-cta fade-in">
+                <a href="tel:+18565533899" class="process-btn">
+                    Start with a Call
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Gallery Preview -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="gallery-header">
+                <span class="text-muted label fade-in">Our Work</span>
+                <h2 class="fade-in">Recent Projects</h2>
+                <p class="fade-in">Real kitchens we've completed for local homeowners.</p>
+            </div>
+        </div>
+
+        <!-- Simple Gallery Grid Preview -->
+        <div class="container">
+            <div class="gallery-preview fade-in">
+                <a href="gallery.html" class="gallery-preview-item">
+                    <img src="ocean/kitchen15.png" alt="Modern Gray Kitchen" loading="lazy">
+                    <div class="gallery-preview-overlay">
+                        <span>Modern Gray Kitchen</span>
+                    </div>
+                </a>
+                <a href="gallery.html" class="gallery-preview-item">
+                    <img src="ocean/kitchen14.png" alt="White Built-In Cabinets" loading="lazy">
+                    <div class="gallery-preview-overlay">
+                        <span>White Built-In Cabinets</span>
+                    </div>
+                </a>
+                <a href="gallery.html" class="gallery-preview-item">
+                    <img src="ocean/kitchen.png" alt="Contemporary White Kitchen" loading="lazy">
+                    <div class="gallery-preview-overlay">
+                        <span>Contemporary White Kitchen</span>
+                    </div>
+                </a>
+                <a href="gallery.html" class="gallery-preview-item">
+                    <img src="ocean/kitchen12.png" alt="Gray Shaker Style" loading="lazy">
+                    <div class="gallery-preview-overlay">
+                        <span>Gray Shaker Style</span>
+                    </div>
+                </a>
+            </div>
+            <div class="gallery-cta fade-in">
+                <a href="gallery.html" class="gallery-btn">
+                    View All Projects
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted Brands -->
+    <section class="brands-section">
+        <div class="brands-header">
+            <p class="fade-in">Brands We Work With</p>
+        </div>
+        <div class="brands-carousel">
+            <div class="brands-track" id="brandsTrack">
+                <div class="brand-item"><a href="https://fabuwood.com" target="_blank" rel="noopener"><img src="ocean/fabuwood.png" alt="Fabuwood"></a></div>
+                <div class="brand-item"><a href="https://www.cambriausa.com" target="_blank" rel="noopener"><img src="ocean/cambria.png" alt="Cambria"></a></div>
+                <div class="brand-item"><a href="https://www.makelloskitchens.com" target="_blank" rel="noopener"><img src="ocean/makellos.png" alt="Makellos"></a></div>
+                <div class="brand-item"><a href="https://www.woodconceptcabinets.com" target="_blank" rel="noopener"><img src="ocean/woodconcept.png" alt="Wood Concept"></a></div>
+                <div class="brand-item"><a href="https://www.jckcabinetry.com" target="_blank" rel="noopener"><img src="ocean/jck.png" alt="JCK"></a></div>
+                <div class="brand-item"><a href="https://www.caesarstoneus.com" target="_blank" rel="noopener"><img src="ocean/QUARTZ.png" alt="Quartz"></a></div>
+                <div class="brand-item"><a href="https://www.pentalquartz.com" target="_blank" rel="noopener"><img src="ocean/pentalquartz.png" alt="Pental Quartz"></a></div>
+                <div class="brand-item"><a href="https://www.topknobs.com" target="_blank" rel="noopener"><img src="ocean/topknobs.png" alt="Top Knobs"></a></div>
+                <!-- Duplicate for seamless scroll -->
+                <div class="brand-item"><a href="https://fabuwood.com" target="_blank" rel="noopener"><img src="ocean/fabuwood.png" alt="Fabuwood"></a></div>
+                <div class="brand-item"><a href="https://www.cambriausa.com" target="_blank" rel="noopener"><img src="ocean/cambria.png" alt="Cambria"></a></div>
+                <div class="brand-item"><a href="https://www.makelloskitchens.com" target="_blank" rel="noopener"><img src="ocean/makellos.png" alt="Makellos"></a></div>
+                <div class="brand-item"><a href="https://www.woodconceptcabinets.com" target="_blank" rel="noopener"><img src="ocean/woodconcept.png" alt="Wood Concept"></a></div>
+                <div class="brand-item"><a href="https://www.jckcabinetry.com" target="_blank" rel="noopener"><img src="ocean/jck.png" alt="JCK"></a></div>
+                <div class="brand-item"><a href="https://www.caesarstoneus.com" target="_blank" rel="noopener"><img src="ocean/QUARTZ.png" alt="Quartz"></a></div>
+                <div class="brand-item"><a href="https://www.pentalquartz.com" target="_blank" rel="noopener"><img src="ocean/pentalquartz.png" alt="Pental Quartz"></a></div>
+                <div class="brand-item"><a href="https://www.topknobs.com" target="_blank" rel="noopener"><img src="ocean/topknobs.png" alt="Top Knobs"></a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image fade-in">
+                    <img src="ocean/kitchen16.png" alt="Our showroom" loading="lazy">
+                </div>
+                <div class="about-text">
+                    <span class="text-muted label fade-in">About Us</span>
+                    <h2 class="fade-in">Local. Honest. Here to help.</h2>
+                    <p class="fade-in">We're a family-owned cabinet store in Lindenwold, NJ. We've helped hundreds of homeowners create kitchens they love — without the stress.</p>
+                    <ul class="about-highlights fade-in">
+                        <li>Free in-home measurement</li>
+                        <li>Honest pricing — no hidden fees</li>
+                        <li>We handle design, ordering, and installation</li>
+                        <li>Local showroom — come see samples in person</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section">
+        <h2 class="fade-in">Ready to get started?</h2>
+        <p class="fade-in">A quick conversation is all it takes. No pressure, no commitment.</p>
+        <div class="cta-buttons fade-in">
+            <a href="booking.html" class="cta-btn primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                Schedule Free Consultation
+            </a>
+            <a href="tel:+18565533899" class="cta-btn secondary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                </svg>
+                Call (856) 553-3899
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-text">
+                    <span class="text-muted label fade-in">Contact</span>
+                    <h2 class="fade-in">Let's talk</h2>
+                    <p class="fade-in">Have questions? Not sure where to start? Just reach out. We're happy to help.</p>
+                    <ul class="contact-details fade-in">
+                        <li>
+                            <div class="detail-label">Showroom</div>
+                            <div>555 Blackwood-Clementon Road<br>Lindenwold, NJ 08021</div>
+                        </li>
+                        <li>
+                            <div class="detail-label">Phone</div>
+                            <a href="tel:+18565533899">(856) 553-3899</a>
+                        </li>
+                        <li>
+                            <div class="detail-label">Email</div>
+                            <a href="mailto:oceancabinets888@gmail.com">oceancabinets888@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <form class="contact-form fade-in" action="https://formspree.io/f/mwvneyzq" method="POST">
+                    <input type="hidden" name="_redirect" value="/thank-you.html">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone (optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">How can we help?</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        Send Message
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">Ocean Cabinet</div>
+                <p class="footer-tagline">Local kitchen cabinet retail and installation in South Jersey.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="gallery.html">Our Work</a></li>
+                        <li><a href="booking.html">Book Appointment</a></li>
+                        <li><a href="service-area.html">Service Area</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+18565533899">(856) 553-3899</a></li>
+                        <li><a href="mailto:oceancabinets888@gmail.com">oceancabinets888@gmail.com</a></li>
+                        <li>555 Blackwood-Clementon Rd</li>
+                        <li>Lindenwold, NJ 08021</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Hours</h4>
+                    <ul>
+                        <li>Mon-Fri: 9am - 6pm</li>
+                        <li>Sat: 10am - 4pm</li>
+                        <li>Sun: Closed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2024 Ocean Cabinet and Countertops. All rights reserved.</span>
+            <span>Serving Lindenwold & South Jersey</span>
+        </div>
+    </footer>
+
+    <script>
+        // ========================================
+        // Fade-in animations
+        // ========================================
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+        // ========================================
+        // Navigation
+        // ========================================
+        const nav = document.querySelector('.nav');
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const scrollProgress = document.querySelector('.scroll-progress');
+
+        // Scroll effects
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY > 100;
+            nav.classList.toggle('scrolled', scrolled);
+
+            // Progress bar
+            const height = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / height) * 100;
+            scrollProgress.style.width = progress + '%';
+        });
+
+        // Mobile toggle
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+    </script>
+</body>
+</html>
