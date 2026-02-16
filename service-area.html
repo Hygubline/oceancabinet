@@ -139,11 +139,89 @@
         }
         .map-visual {
             position: relative;
+            overflow: hidden;
         }
         .service-map-img {
             width: 100%;
             height: auto;
             display: block;
+        }
+
+        /* Radar Pulse Animation */
+        .radar-container {
+            position: absolute;
+            top: 54%;
+            left: 54.5%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        .radar-pulse {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(184, 151, 126, 0.4);
+        }
+        .radar-pulse::before,
+        .radar-pulse::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 2px solid var(--color-accent);
+            opacity: 0;
+            animation: radarWave 3s ease-out infinite;
+        }
+        .radar-pulse::before {
+            animation-delay: 0s;
+        }
+        .radar-pulse::after {
+            animation-delay: 1.5s;
+        }
+        .radar-wave-1,
+        .radar-wave-2,
+        .radar-wave-3 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 2px solid var(--color-accent);
+            opacity: 0;
+            animation: radarWave 3s ease-out infinite;
+        }
+        .radar-wave-1 { animation-delay: 0s; }
+        .radar-wave-2 { animation-delay: 1s; }
+        .radar-wave-3 { animation-delay: 2s; }
+
+        @keyframes radarWave {
+            0% {
+                width: 20px;
+                height: 20px;
+                opacity: 0.8;
+            }
+            100% {
+                width: 300px;
+                height: 300px;
+                opacity: 0;
+            }
+        }
+
+        .radar-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--color-accent), 0 0 20px rgba(184, 151, 126, 0.5);
         }
 
         /* Map Legend */
@@ -393,6 +471,20 @@
         .footer-links { display: flex; gap: 32px; list-style: none; }
         .footer-links a { font-size: 0.875rem; transition: color 0.3s; }
         .footer-links a:hover { color: #fff; }
+        .footer-social { display: flex; gap: 12px; }
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        .footer-social a:hover { background: var(--color-accent); transform: translateY(-2px); }
+        .footer-social svg { width: 18px; height: 18px; fill: rgba(255,255,255,0.8); }
+        .footer-social a:hover svg { fill: #fff; }
 
         @media (max-width: 1024px) {
             .map-container {
@@ -420,7 +512,12 @@
 
             .page-header { padding: 120px 24px 48px; }
             .map-section { padding: 40px 24px 60px; }
-            .map-visual { padding: 24px; min-height: 350px; }
+            .map-visual { min-height: auto; }
+            @keyframes radarWave {
+                0% { width: 15px; height: 15px; opacity: 0.8; }
+                100% { width: 200px; height: 200px; opacity: 0; }
+            }
+            .radar-center { width: 10px; height: 10px; }
             .map-legend { flex-wrap: wrap; gap: 16px; }
             .service-info { padding: 24px; }
             .areas-grid { grid-template-columns: 1fr; }
@@ -470,6 +567,13 @@
             <div class="map-wrapper">
                 <div class="map-visual">
                     <img src="ocean/map.png" alt="Ocean Cabinet Service Area - South Jersey and Philadelphia Region" class="service-map-img">
+                    <!-- Radar Pulse Animation -->
+                    <div class="radar-container">
+                        <div class="radar-wave-1"></div>
+                        <div class="radar-wave-2"></div>
+                        <div class="radar-wave-3"></div>
+                        <div class="radar-center"></div>
+                    </div>
                 </div>
 
                 <div class="map-legend">
@@ -491,8 +595,8 @@
                 <div class="location-card">
                     <h4>Headquarters</h4>
                     <address>
-                        555 Blackwood-Clementon Road<br>
-                        Lindenwold, NJ 08021
+                        2093 Marlton Pike<br>
+                        Cherry Hill Township, NJ 08003
                     </address>
                     <div class="phone">
                         <a href="tel:+18565533899">(856) 553-3899</a>
@@ -629,6 +733,14 @@
                 <li><a href="service-area.html">Service Area</a></li>
                 <li><a href="tel:+18565533899">(856) 553-3899</a></li>
             </ul>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/p/Ocean-Cabinets-Countertops-100057632395827/" target="_blank" rel="noopener" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/ocean_cabinet_countertop/" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                </a>
+            </div>
         </div>
     </footer>
 
